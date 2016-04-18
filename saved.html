@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Spotify API Player</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="style.css" />
+
+	<script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+	<script src="scripts/saved.js"></script>
+</head>
+<body>
+
+<div class="container margin-top-20">
+	<div>
+		<a href="index.html" class="btn btn-info">
+			<span class="glyphicon glyphicon-menu-left"></span>
+			Back
+		</a>
+	</div>
+
+	<div id="song-container">
+		<!--One Song-->
+		<script id="song-template" type="text/x-handlebars-template">
+			<div class="row margin-top-20 one-song">
+				<div class="col-sm-3">
+					<img src="{{track.album.images.1.url}}" class="img-responsive" />
+				</div>
+				<div class="col-sm-9">
+					<h2>{{track.name}}</h2>
+					<p>
+						By {{track.artists.0.name}}
+					</p>
+					<p>
+						Album: {{track.album.name}}
+					</p>
+					<div class="margin-top-20">
+						<audio controls>
+							<source src="{{track.preview_url}}" type="audio/mpeg">
+						</audio>
+					</div>
+					<div class="margin-top-20">
+						<button id="remove-track" type="submit" class="btn btn-danger btn-sm" data-id="{{track.id}}">
+							<span class="glyphicon glyphicon-remove margin-right-5"></span>
+							Remove Track
+						</button>
+					</div>
+				</div>
+			</div>
+		</script>
+		<!--/One Song-->
+	</div>
+</div>
+
+</body>
+</html>
